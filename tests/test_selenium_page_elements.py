@@ -20,7 +20,6 @@ def test_elements_on_page(driver):
    )
    # Таб Почта есть, поле ввода 'Электронная почта'
    driver.find_element(By.ID, 't-btn-tab-mail').click()
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    wait = WebDriverWait(driver, 10)
    wait.until(element_has_css_class((By.ID, 't-btn-tab-mail'), "rt-tab--active"))
    WebDriverWait(driver, 10).until(
@@ -31,7 +30,6 @@ def test_elements_on_page(driver):
    )
    # Таб Логин есть, поле ввода 'Логин'
    driver.find_element(By.ID, 't-btn-tab-login').click()
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    wait = WebDriverWait(driver, 10)
    wait.until(element_has_css_class((By.ID, 't-btn-tab-login'), "rt-tab--active"))
    WebDriverWait(driver, 10).until(
@@ -42,7 +40,6 @@ def test_elements_on_page(driver):
    )
    # Таб Лицевой счёт есть, поле ввода 'Лицевой счёт'
    driver.find_element(By.ID, 't-btn-tab-ls').click()
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    wait = WebDriverWait(driver, 10)
    wait.until(element_has_css_class((By.ID, 't-btn-tab-ls'), "rt-tab--active"))
    WebDriverWait(driver, 10).until(
@@ -60,7 +57,6 @@ def test_elements_on_page(driver):
       EC.text_to_be_present_in_element((By.XPATH, '//*[@id="page-left"]/div/div[2]/p'), 'Персональный помощник в цифровом мире Ростелекома')
    )
 def test_tab_auto_switch_phone_to_mail(driver):
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # проверяем что таб Телефон активен по умолчанию
    wait = WebDriverWait(driver, 10)
    element = wait.until(element_has_css_class((By.ID, 't-btn-tab-phone'), "rt-tab--active"))
@@ -68,25 +64,19 @@ def test_tab_auto_switch_phone_to_mail(driver):
    driver.find_element(By.ID, 'username').send_keys(valid_email)
    # Вводим пароль
    driver.find_element(By.ID, 'password').send_keys(valid_password)
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # проверяем что таб Почта активен
    wait = WebDriverWait(driver, 10)
    wait.until(element_has_css_class((By.ID, 't-btn-tab-mail'), "rt-tab--active"))
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
-
 def test_tab_auto_switch_mail_to_phone(driver):
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # Нажимаем на таб Почта
    driver.find_element(By.ID, 't-btn-tab-mail').click()
    # Вводим телефон
    driver.find_element(By.ID, 'username').send_keys(valid_phone)
    # Вводим пароль
    driver.find_element(By.ID, 'password').send_keys(valid_password)
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # проверяем что таб Телефон активен
    wait = WebDriverWait(driver, 10)
    element = wait.until(element_has_css_class((By.ID, 't-btn-tab-phone'), "rt-tab--active"))
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
 
 def test_active_reg_ref(driver):
    # Ссылка на страницу регистрации
@@ -99,7 +89,6 @@ def test_active_reg_ref(driver):
    # Нажать на ссылку
    driver.find_element(By.ID, 'kc-register').click()
    # Проверить что открылась страница регистрации
-   WebDriverWait(driver, 11).until(
+   WebDriverWait(driver, 10).until(
       EC.text_to_be_present_in_element((By.CSS_SELECTOR, '#page-right > div > div > h1'), 'Регистрация')
    )
-   time.sleep(5)  # небольшая задержка, чисто ради эксперимента
