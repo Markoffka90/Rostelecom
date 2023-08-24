@@ -87,3 +87,19 @@ def test_tab_auto_switch_mail_to_phone(driver):
    wait = WebDriverWait(driver, 10)
    element = wait.until(element_has_css_class((By.ID, 't-btn-tab-phone'), "rt-tab--active"))
    time.sleep(5)  # небольшая задержка, чисто ради эксперимента
+
+def test_active_reg_ref(driver):
+   # Ссылка на страницу регистрации
+   WebDriverWait(driver, 10).until(
+      EC.text_to_be_present_in_element((By.XPATH, '//a[@id="kc-register"]'), 'Зарегистрироваться')
+   )
+   # Ссылка активна
+   wait = WebDriverWait(driver, 10)
+   wait.until(element_has_css_class((By.ID, 'kc-register'), "rt-link--orange"))
+   # Нажать на ссылку
+   driver.find_element(By.ID, 'kc-register').click()
+   # Проверить что открылась страница регистрации
+   WebDriverWait(driver, 11).until(
+      EC.text_to_be_present_in_element((By.CSS_SELECTOR, '#page-right > div > div > h1'), 'Регистрация')
+   )
+   time.sleep(5)  # небольшая задержка, чисто ради эксперимента

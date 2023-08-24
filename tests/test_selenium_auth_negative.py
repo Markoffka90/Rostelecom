@@ -37,7 +37,7 @@ def test_auth_phone_empty_phone(driver, phone):
    )
    time.sleep(5)  # небольшая задержка, чисто ради эксперимента
 @pytest.mark.auth_phone
-@pytest.mark.parametrize("phone", ['6666666666', '555555555555'], ids= ['wrong phone', 'invalid phone 11 number'])
+@pytest.mark.parametrize("phone", ['0000000000', '555555555555'], ids= ['wrong phone', 'invalid phone 11 number'])
 def test_auth_phone_wrong_user_name(driver, phone):
    time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # Вводим телефон
@@ -58,7 +58,7 @@ def test_auth_phone_wrong_user_name(driver, phone):
 @pytest.mark.auth_phone
 @pytest.mark.xfail
 @pytest.mark.parametrize("passw", ['', '          '], ids= ['empty', 'only blanks'])
-def test_auth_phone_empty_phone(driver, passw):
+def test_auth_phone_empty_pass(driver, passw):
    time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # Вводим телефон
    driver.find_element(By.ID, 'username').send_keys(valid_phone)
@@ -74,7 +74,7 @@ def test_auth_phone_empty_phone(driver, passw):
    time.sleep(5)  # небольшая задержка, чисто ради эксперимента
 @pytest.mark.auth_phone
 @pytest.mark.parametrize("passw", ['66666666666', 'djfhdjfhdlkfj'], ids= ['wrong passord number', 'invalid password letters'])
-def test_auth_phone_wrong_or_pass(driver, passw):
+def test_auth_phone_wrong_pass(driver, passw):
    time.sleep(5)  # небольшая задержка, чисто ради эксперимента
    # Вводим телефон
    driver.find_element(By.ID, 'username').send_keys(valid_phone)
